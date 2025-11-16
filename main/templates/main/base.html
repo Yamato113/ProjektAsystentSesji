@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Asystent sesji</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+<div class="page-wrapper">
+
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-mark">AS</span>
+                <span class="logo-text">Asystent sesji</span>
+            </div>
+            <nav class="nav">
+                <a href="{% url 'index' %}" class="nav-link">Strona główna</a>
+                <a href="{% url 'kalendarz' %}" class="nav-link">Kalendarz egzaminów</a>
+                <a href="{% url 'przesady_strona' %}" class="nav-link">Przesądy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Asystent sesji – projekt studencki</p>
+    </footer>
+
+</div>
+
+<script src="{% static 'main/js/app.js' %}"></script>
+</body>
+</html>

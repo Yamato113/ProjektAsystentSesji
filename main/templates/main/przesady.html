@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<section class="card">
+    <h2>Przesądy studenckie</h2>
+    <p class="text-muted">
+        Trochę z przymrużeniem oka – studenckie przesądy związane z sesją i egzaminami.
+    </p>
+
+    <div class="form-row" style="margin-top: 12px;">
+        <button id="btn-losuj-przesad" class="btn">
+            Losuj przesąd
+        </button>
+        <button id="btn-wszystkie-przesady" class="btn btn-secondary">
+            Pokaż wszystkie przesądy
+        </button>
+    </div>
+
+    <div id="przesad-wynik" class="wynik-blok">
+        <p>Kliknij „Losuj przesąd”, aby zobaczyć pierwszy wynik.</p>
+    </div>
+
+    <h3>Lista przesądów</h3>
+    <ul id="lista-przesadow" class="lista-przesadow">
+        <!-- JS wstawi przesądy -->
+    </ul>
+</section>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<section class="card">
+    <h2>Kalendarz egzaminów</h2>
+    <p class="text-muted">
+        Lista egzaminów w sesji. Możesz przefiltrować je po typie, aby szybciej zaplanować przygotowania.
+    </p>
+
+    <div class="form-row">
+        <label for="typ-egzaminu" class="text-muted">Filtruj po typie:</label>
+        <select id="typ-egzaminu">
+            <option value="">Wszystkie</option>
+            <option value="pisemny">Pisemny</option>
+            <option value="ustny">Ustny</option>
+            <option value="projekt">Projekt</option>
+        </select>
+    </div>
+
+    <div class="table-wrapper">
+        <table id="tabela-egzaminow" class="tabela">
+            <thead>
+                <tr>
+                    <th>Przedmiot</th>
+                    <th>Data</th>
+                    <th>Godzina</th>
+                    <th>Miejsce</th>
+                    <th>Typ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5" class="text-muted">
+                        Ładowanie egzaminów...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

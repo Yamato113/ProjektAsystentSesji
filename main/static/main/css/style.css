@@ -1,0 +1,256 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.hidden {
+    display: none;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nagłówek i nawigacja */
+
+.header {
+    background: #111827;
+    color: #f9fafb;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.5);
+}
+
+.header-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background: #4f46e5;
+    color: #eef2ff;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.logo-text {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    font-size: 1rem;
+}
+
+.nav {
+    display: flex;
+    gap: 16px;
+}
+
+.nav-link {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 6px 10px;
+    border-radius: 999px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background: #4f46e5;
+    color: #f9fafb;
+}
+
+/* Glowne wnetrze */
+
+.content {
+    flex: 1;
+    max-width: 1080px;
+    margin: 24px auto 32px;
+    padding: 0 20px;
+}
+
+/* Sekcje / karty */
+
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+    border: 1px solid #e5e7eb;
+}
+
+.card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+/* Tekst pomocniczy */
+
+.text-muted {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* Przyciski */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: none;
+    background: #4f46e5;
+    color: #f9fafb;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.05s;
+}
+
+.btn:hover {
+    background: #4338ca;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.btn-secondary:hover {
+    background: #d1d5db;
+}
+
+/* Bloki wynikowe */
+
+.wynik-blok {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: #eef2ff;
+    border-radius: 8px;
+    border-left: 4px solid #4f46e5;
+    font-size: 0.95rem;
+}
+
+.wynik-blok p + p {
+    margin-top: 6px;
+}
+
+/* Lista przesądów */
+
+.lista-przesadow {
+    margin-top: 10px;
+    padding-left: 18px;
+}
+
+.lista-przesadow li {
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+}
+
+/* Tabela egzaminow */
+
+.table-wrapper {
+    margin-top: 12px;
+    overflow-x: auto;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.tabela th,
+.tabela td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.tabela th {
+    background: #f9fafb;
+    font-weight: 600;
+    color: #374151;
+}
+
+.tabela tbody tr:hover {
+    background: #f3f4ff;
+}
+
+/* Formularze / select */
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+select {
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    font-size: 0.95rem;
+}
+
+/* Stopka */
+
+.footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6b7280;
+    padding: 14px 0;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 8px;
+}
+
+/* Responsywnosc */
+
+@media (max-width: 720px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
