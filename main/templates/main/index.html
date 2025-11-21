@@ -1,0 +1,113 @@
+{% extends "main/base.html" %}
+{% block content %}
+
+<div class="row g-4 align-items-stretch">
+  <!-- HERO -->
+  <div class="col-lg-7">
+    <div class="card card-hero h-100">
+      <div class="card-body p-4 p-lg-5">
+        <h1 class="display-6 fw-bold mb-2">🎓 Asystent Sesji</h1>
+        <p class="lead text-muted mb-4">
+          Twoj pomocnik w czasie sesji: porady motywacyjne, kalendarz egzaminów oraz przesądy studenckie.
+        </p>
+
+        <div class="card card-inner p-3 p-lg-4 mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h5 class="mb-0">Losowa porada</h5>
+            <span class="badge rounded-pill bg-primary-subtle text-primary">motywacja</span>
+          </div>
+
+          <p id="porada-tekst" class="fs-5 mb-1">
+            Kliknij przycisk, aby wylosowac porade ✨
+          </p>
+          <small id="porada-kategoria" class="text-muted"></small>
+
+          <button id="btn-losuj-porade" class="btn btn-primary mt-3">
+            🎲 Losuj porade
+          </button>
+        </div>
+
+        <div id="porada-error" class="alert alert-warning d-none mt-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK NAV -->
+  <div class="col-lg-5">
+    <div class="row g-3 h-100">
+      <div class="col-12">
+        <a class="card card-nav h-100" href="{% url 'kalendarz' %}">
+          <div class="card-body p-4">
+            <div class="icon-bubble mb-3">📅</div>
+            <h4 class="fw-semibold mb-1">Kalendarz egzaminów</h4>
+            <p class="text-muted mb-0">
+              Dodawaj egzaminy, filtruj po typie i exportuj do CSV.
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12">
+        <a class="card card-nav h-100" href="{% url 'przesady_strona' %}">
+          <div class="card-body p-4">
+            <div class="icon-bubble mb-3">🍀</div>
+            <h4 class="fw-semibold mb-1">Przesądy studenckie</h4>
+            <p class="text-muted mb-0">
+              Poznaj studenckie przesądy i wylosuj swoj na szczescie.
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-12">
+        <div class="card card-tip h-100">
+          <div class="card-body p-4">
+            <h5 class="fw-semibold">💡 Tip na dzis</h5>
+            <p class="mb-0 text-muted">
+              Powtarzaj material po 25 minut i rob 5 minut przerwy (technika Pomodoro).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  const btn = document.getElementById("btn-losuj-porade");
+  const tekst = document.getElementById("porada-tekst");
+  const kat = document.getElementById("porada-kategoria");
+  const err = document.getElementById("porada-error");
+
+  btn.addEventListener("click", async () => {
+    btn.disabled = true;
+    btn.innerText = "Losowanie...";
+    err.classList.add("d-none");
+
+    try {
+      const r = await fetch("{% url 'api_losowa_porada' %}");
+      const data = await r.json();
+
+      if (!r.ok) {
+        err.innerText = data.komunikat || "Blad podczas losowania.";
+        err.classList.remove("d-none");
+        tekst.innerText = "Brak porad w bazie.";
+        kat.innerText = "";
+        return;
+      }
+
+      tekst.innerText = data.porada.tekst;
+      kat.innerText = "Kategoria: " + data.porada.kategoria;
+    } catch (e) {
+      err.innerText = "Nie udalo sie polaczyc z serwerem.";
+      err.classList.remove("d-none");
+    } finally {
+      btn.disabled = false;
+      btn.innerText = "🎲 Losuj porade";
+    }
+  });
+</script>
+{% endblock %}

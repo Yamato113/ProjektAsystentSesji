@@ -1,0 +1,257 @@
+:root {
+  --app-bg: #08162e;
+  --app-bg-soft: #0c2142;
+  --card-bg: rgba(255,255,255,0.06);
+  --card-bg-strong: rgba(255,255,255,0.10);
+  --card-border: rgba(255,255,255,0.12);
+  --text-main: rgba(255,255,255,0.98);
+  --text-soft: rgba(255,255,255,0.88);
+  --text-muted: rgba(255,255,255,0.72);
+  --accent: #7c5cff;
+  --accent-2: #2dd4bf;
+
+  --table-row-odd: rgba(12, 28, 65, 0.78);
+  --table-row-even: rgba(8, 20, 48, 0.62);
+  --table-head: rgba(255,255,255,0.12);
+  --table-border: rgba(255,255,255,0.14);
+}
+
+.bg-app {
+  min-height: 100vh;
+  color: var(--text-main);
+  background:
+    radial-gradient(1100px circle at 15% -10%, rgba(70,120,255,0.55), transparent 60%),
+    radial-gradient(900px circle at 95% 0%, rgba(90,190,255,0.40), transparent 55%),
+    radial-gradient(800px circle at 50% 100%, rgba(40,90,200,0.35), transparent 60%),
+    linear-gradient(180deg, #07132a 0%, #081a3a 40%, #071f4a 100%);
+}
+
+.navbar-app {
+  background: rgba(6, 15, 35, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.navbar-app .nav-link {
+  color: var(--text-soft) !important;
+  opacity: 0.9;
+}
+
+.navbar-app .nav-link:hover {
+  opacity: 1;
+  color: #ffffff !important;
+}
+
+.navbar-app .nav-link.active {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.brand-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: inline-block;
+}
+
+.footer-app {
+  border-top: 1px solid var(--card-border);
+  background: rgba(6, 15, 35, 0.75);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  color: var(--text-main);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.28);
+}
+
+.card-hero {
+  background:
+    linear-gradient(180deg, rgba(124,92,255,0.16), rgba(45,212,191,0.08)),
+    var(--card-bg-strong);
+}
+
+.card-inner {
+  background: rgba(255,255,255,0.09);
+  border: 1px dashed var(--card-border);
+}
+
+.card-nav {
+  text-decoration: none;
+  transition: transform .12s ease, border-color .12s ease, background .12s ease;
+}
+
+.card-nav h4,
+.card-nav h5 {
+  color: var(--text-main);
+}
+
+.card-nav p {
+  color: var(--text-muted) !important;
+}
+
+.card-nav:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.10);
+}
+
+.card-tip {
+  border-style: dashed;
+}
+
+.card-tip p {
+  color: var(--text-soft) !important;
+}
+
+.icon-bubble {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  border-radius: 14px;
+  background: rgba(124,92,255,0.22);
+  border: 1px solid rgba(124,92,255,0.45);
+}
+
+.table-responsive {
+  border-radius: 14px;
+  overflow: hidden;
+  background: transparent !important;
+}
+
+.table {
+  width: 100%;
+  color: var(--text-main) !important;
+  background: transparent !important;
+  border-collapse: separate !important;
+  border-spacing: 0;
+  border-radius: 14px;
+  overflow: hidden;
+
+  --bs-table-color: var(--text-main);
+  --bs-table-bg: transparent;
+  --bs-table-border-color: var(--table-border);
+  --bs-table-striped-color: var(--text-main);
+  --bs-table-striped-bg: var(--table-row-odd);
+  --bs-table-active-color: var(--text-main);
+  --bs-table-active-bg: rgba(255,255,255,0.10);
+  --bs-table-hover-color: var(--text-main);
+  --bs-table-hover-bg: rgba(255,255,255,0.12);
+}
+
+.table thead th {
+  color: var(--text-soft) !important;
+  font-weight: 600;
+  background: var(--table-head) !important;
+  border-bottom: 1px solid var(--table-border) !important;
+  padding: 14px 16px !important;
+}
+
+.table tbody tr:nth-of-type(odd) td,
+.table tbody tr:nth-of-type(odd) th {
+  background: var(--table-row-odd) !important;
+}
+
+.table tbody tr:nth-of-type(even) td,
+.table tbody tr:nth-of-type(even) th {
+  background: var(--table-row-even) !important;
+}
+
+.table td,
+.table tbody th {
+  color: var(--text-main) !important;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.35);
+  border-bottom: 1px solid var(--table-border) !important;
+  padding: 14px 16px !important;
+  vertical-align: middle;
+}
+
+.form-control,
+.form-select {
+  background: rgba(255,255,255,0.09) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--card-border) !important;
+  border-radius: 12px;
+}
+
+.form-control::placeholder {
+  color: rgba(255,255,255,0.65);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), #5b8cff);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(124,92,255,0.35);
+}
+
+.btn-outline-secondary,
+.btn-outline-success {
+  border-radius: 12px;
+  color: var(--text-main) !important;
+  border-color: var(--card-border) !important;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-success:hover {
+  background: rgba(255,255,255,0.10) !important;
+}
+
+.alert {
+  border-radius: 14px;
+  border-color: var(--card-border);
+  background: rgba(255,255,255,0.09);
+  color: var(--text-main);
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+p,
+small,
+li,
+label {
+  color: var(--text-soft);
+}
+
+.card .list-group {
+  background: transparent !important;
+  padding: 0;
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.card .list-group-item {
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  color: var(--text-main) !important;
+  backdrop-filter: blur(6px);
+  padding: 18px 22px;
+  font-size: 1.05rem;
+}
+
+.card .list-group-item + .list-group-item {
+  border-top: 1px solid rgba(255,255,255,0.10) !important;
+}
+
+.card .list-group-item:hover {
+  background: rgba(255,255,255,0.12) !important;
+  transition: 0.15s ease-in-out;
+}
+
+.form-select option {
+  color: #0f172a !important;
+  background: #ffffff !important;
+}
+
+.form-select optgroup {
+  color: #0f172a !important;
+  background: #ffffff !important;
+}

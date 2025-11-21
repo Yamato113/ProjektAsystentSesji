@@ -1,0 +1,55 @@
+{% extends "main/base.html" %}
+{% block content %}
+
+<div class="container py-4">
+  <h1 class="mb-3">🍀 Przesądy przed egzaminem</h1>
+
+  <div class="d-flex gap-2 mb-4">
+    <a href="{% url 'przesady_strona' %}?losowy=1" class="btn btn-primary">
+      Losuj przesąd
+    </a>
+
+    <a href="{% url 'przesady_strona' %}" class="btn btn-outline-secondary">
+      Pokaż wszystkie
+    </a>
+  </div>
+
+  {% if przesad_losowy %}
+    <div class="alert alert-success">
+      <h4 class="alert-heading">Wylosowany przesąd:</h4>
+      <p class="mb-1">
+        <strong>{{ przesad_losowy.tekst }}</strong>
+      </p>
+      {% if przesad_losowy.opis_pochodzenia %}
+        <small class="text-muted">
+          {{ przesad_losowy.opis_pochodzenia }}
+        </small>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Lista przesądów</h4>
+
+      {% if przesady %}
+        <ul class="list-group list-group-flush mt-3">
+          {% for p in przesady %}
+            <li class="list-group-item">
+              <div><strong>{{ p.tekst }}</strong></div>
+              {% if p.opis_pochodzenia %}
+                <div class="text-muted small">
+                  {{ p.opis_pochodzenia }}
+                </div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-muted mt-3">Brak przesądów w bazie.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

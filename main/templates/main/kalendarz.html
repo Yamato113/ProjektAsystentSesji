@@ -1,0 +1,91 @@
+{% extends "main/base.html" %}
+{% block content %}
+
+<div class="container py-4">
+  <h1 class="mb-3">📅 Kalendarz egzaminów</h1>
+
+  <!-- GÓRNY PANEL: FILTR + RESET + EKSPORT -->
+  <form method="get" class="mb-4 d-flex gap-2 align-items-center">
+
+    <select name="typ" class="form-select" style="max-width: 220px;">
+
+      <option value="">
+        — wszystkie typy —
+      </option>
+
+      <option value="pisemny"
+              {% if typ_filtru == "pisemny" %}selected{% endif %}>
+        pisemny
+      </option>
+
+      <option value="ustny"
+              {% if typ_filtru == "ustny" %}selected{% endif %}>
+        ustny
+      </option>
+
+      <option value="projekt"
+              {% if typ_filtru == "projekt" %}selected{% endif %}>
+        projekt
+      </option>
+
+    </select>
+
+    <button type="submit" class="btn btn-primary">Filtruj</button>
+    <a href="{% url 'kalendarz' %}" class="btn btn-outline-secondary">Reset</a>
+
+    <a href="{% url 'export_egzaminy_csv' %}" class="btn btn-outline-success ms-auto">
+      📤 Eksport CSV
+    </a>
+  </form>
+
+  <!-- LISTA EGZAMINÓW -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h4 class="card-title">Lista egzaminów</h4>
+
+      {% if egzaminy %}
+      <div class="table-responsive">
+        <table class="table table-striped mt-3">
+          <thead>
+            <tr>
+              <th>Przedmiot</th>
+              <th>Data</th>
+              <th>Godzina</th>
+              <th>Miejsce</th>
+              <th>Typ</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for e in egzaminy %}
+            <tr>
+              <td>{{ e.przedmiot }}</td>
+              <td>{{ e.data }}</td>
+              <td>{{ e.godzina }}</td>
+              <td>{{ e.miejsce }}</td>
+              <td>{{ e.typ }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+        <p class="text-muted mt-3">Brak egzaminów w bazie.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- FORMULARZ DODAWANIA EGZAMINU -->
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Dodaj nowy egzamin</h4>
+
+      <form method="post" class="mt-3">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Dodaj egzamin</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
